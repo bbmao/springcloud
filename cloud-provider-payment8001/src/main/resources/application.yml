@@ -1,0 +1,30 @@
+server:
+  port: 8001
+
+spring:
+  application:
+    name: cloud-payment-service
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource  #当前数据源操作类型
+    druid:
+      url: jdbc:mysql://localhost:3306/springcloud?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
+      username: root
+      password: 123456                   #mysql驱动包
+      driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis:
+  type-aliases-package: com.guigu.springcloud.entities #所有entity别名类所在包
+  mapper-locations: classpath:mapper/*.xml
+
+eureka:
+  client:
+    register-with-eureka: true   #注册自己的配置:默认也是true
+    fetch-registry: true #自己就是注册中心，维护服务实例，不去检索服务
+    service-url:
+#      defaultZone: http://eureka7002.com:7002/eureka/, http://eureka7001.com:7001/eureka/
+      defaultZone: http://eureka7001.com:7001/eureka/
+  instance:
+    instance-id: payment8001
+    prefer-ip-address: true   #访问路径可以显示IP地址
+    lease-renewal-interval-in-seconds: 1  #租金续订间隔，发送心跳的间隔时间
+    lease-expiration-duration-in-seconds: 2 #组件到期时间，多久没有收到心跳会进行删除服务实例操作

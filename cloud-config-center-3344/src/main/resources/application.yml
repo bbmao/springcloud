@@ -1,0 +1,21 @@
+server:
+  port: 80
+
+spring:
+  application:
+    name: cloud-config-center
+  cloud:
+    config:
+      server:
+        git:
+          uri: git@github.com:bbmao/springcloud.git  #github上面git仓库的名字
+          search-paths:
+            - cloud-config-center-3344    #搜索日志
+        default-label: main         #读取分支
+
+eureka:
+  client:
+    register-with-eureka: false   #注册自己的配置:默认也是true
+    fetch-registry: true #自己就是注册中心，维护服务实例，不去检索服务
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/

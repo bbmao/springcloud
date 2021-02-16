@@ -32,6 +32,7 @@ public class OrderController {
     public static final String create_uri ="/payment/create";
     public static final String getId = "/payment/get/%s";
     public static final String paymentLb = "/payment/payment/lb";
+    public static final String zipkinUrl = "/payment/zipkin";
 
     @Resource
     private RestTemplate restTemplate;
@@ -81,6 +82,17 @@ public class OrderController {
         URI uri = serviceInstance.getUri();
         String url= uri + paymentLb;
         return restTemplate.getForObject(url, String.class);
+    }
+
+    /**
+     * zipkin+sleuth
+     * @return
+     */
+    @GetMapping("/payment/zipkin")
+    public String paymentZipkin(){
+        String url = "http://localhost:8001" + zipkinUrl;
+        String result = restTemplate.getForObject(url, String.class);
+        return result;
     }
 
 }

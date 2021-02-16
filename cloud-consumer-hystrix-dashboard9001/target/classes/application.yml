@@ -1,0 +1,13 @@
+server:
+  port: 9001
+
+spring:
+  application:
+    name: cloud-consumer-hystrix-dashboard
+
+#eureka:
+#  client:
+#    register-with-eureka: true   #注册自己的配置:默认也是true
+#    fetch-registry: true #自己就是注册中心，维护服务实例，不去检索服务
+#    service-url:
+#      defaultZone: http://eureka7001.com:7001/eureka/

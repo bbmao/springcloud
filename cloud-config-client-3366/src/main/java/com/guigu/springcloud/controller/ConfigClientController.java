@@ -16,8 +16,11 @@ public class ConfigClientController {
     @Value("${config.info}")
     private String configInfo;
 
+    @Value("${server.port}")
+    private String serverPort;
+
     @GetMapping("/configInfo")
     public String getConfigInfo(){
-        return configInfo;
+        return serverPort + ":" + configInfo;
     }
 }
